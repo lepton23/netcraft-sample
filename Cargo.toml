@@ -1,0 +1,25 @@
+[package]
+name = "p1-cachesim"
+version = "0.1.0"
+edition = "2024"
+
+
+[build]
+rustflag = ["-C", "target-cpu=native"]
+
+[profile.release]
+lto = "fat"
+codegen-units = 1
+opt-level = 3
+debug = false
+panic = "abort"
+strip = "none"
+overflow-checks = false
+incremental = false
+
+[dependencies]
+libc = "0.2.180"
+memmap2 = "0.9.9"
+rustc-hash = "2.1.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
